@@ -1,29 +1,30 @@
+
 import java.util.Scanner;
 
-class InvalidAgeException extends Exception {
-    public InvalidAgeException(String message) {
-        super(message);
-    }
-}
+public class FinallyDemo 
+{
+    public static void main(String[] args) 
+    {
 
-public class AgeValidation {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        if (scanner.hasNextInt()) {
-            int age = scanner.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
-            try {
-                if (age < 18) {
-                    throw new InvalidAgeException("Not eligible to vote");
-                } else {
-                    System.out.println("Eligible to vote");
-                }
-            } catch (InvalidAgeException e) {
-                System.out.println("Exception: " + e.getMessage());
-            }
+        try 
+        {
+            int result = a / b;
+            System.out.println("Result: " + result);
+        }
+        catch (ArithmeticException e) 
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
+        finally 
+        {
+            System.out.println("Finally block executed");
         }
 
-        scanner.close();
+        sc.close();
     }
 }
